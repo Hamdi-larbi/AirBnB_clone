@@ -3,6 +3,7 @@
                               ##################################
 
 Creation of a command interpreter to manage the hbnb projects
+![image](https://github.com/Hamdi-larbi/AirBnB_clone/assets/64673221/89c9ec61-8fc0-4290-8204-c79a7b63e452)
 
 
 #########################
