@@ -67,3 +67,8 @@ The first phase is to manipulate a powerful storage system to give an abstractio
 Commands Implemented
 ####################
 
+Data Diagram
+#############
+![image](https://github.com/Hamdi-larbi/AirBnB_clone/assets/64673221/86290d4d-f402-4003-83c8-b2e1bd153d59)
+
+
