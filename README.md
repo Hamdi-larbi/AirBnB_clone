@@ -3,6 +3,7 @@
                               ##################################
 
 Creation of a command interpreter to manage the hbnb projects
+![image](https://github.com/Hamdi-larbi/AirBnB_clone/assets/64673221/89c9ec61-8fc0-4290-8204-c79a7b63e452)
 
 
 #########################
@@ -65,4 +66,9 @@ The first phase is to manipulate a powerful storage system to give an abstractio
 
 Commands Implemented
 ####################
+
+Data Diagram
+#############
+![image](https://github.com/Hamdi-larbi/AirBnB_clone/assets/64673221/86290d4d-f402-4003-83c8-b2e1bd153d59)
+
 
