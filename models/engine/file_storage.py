@@ -7,6 +7,17 @@ import json
 import os
 from models.base_model import BaseModel
 
+
+#class_dict = {
+#    "BaseModel": BaseModel,
+#    "User": User,
+#    "Place": Place,
+#    "Amenity": Amenity,
+#    "City": City,
+#    "Review": Review,
+#    "State": State
+#}
+
 class FileStorage():
 	"""FileStorage class"""
 	__file_path = 'file.json'
@@ -35,9 +46,7 @@ class FileStorage():
 			with open(FileStorage.__file_path, "r", encoding = "utf-8") as f:
 				mydict = json.load(f)
 				for key, value in mydict.items():
-					cl = value["__class__"]
-					del value["__class__"]
-					mydict[key] = "[{}] ({}) {}".format(cl, value[id], value)
-				FileStorage.__objects = {key: value for key, value in mydict.items()}
+					obj = eval(value["__class__"])(**value)
+					FileStorage.__objects[key] = obj
 
 
