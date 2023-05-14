@@ -1,3 +1,7 @@
+#!/usr/bin/python3
+
+"""test cases using unittest"""
+
 import unittest
 from models.base_model import BaseModel
 
