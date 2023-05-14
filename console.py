@@ -7,13 +7,28 @@ store and persist objects to a file (JSON file)"""
 
 import cmd
 from models.base_model import BaseModel
+from models.user import User
+from models.state import State
+from models.city import City
+from models.amenity import Amenity
+from models.place import Place
+from models.review import Review
 import models
+
 
 
 class HBNBCommand(cmd.Cmd):
 	"""a consule to manage data"""
 
 	prompt = '(hbnb)'
+
+	__class_dict = {"BaseModel": BaseModel,
+			"User": User,
+			"State": State,
+			"City": City,
+			"Amenity": Amenity,
+			"Place": Place,
+			"Review": Review}
 
 	def do_EOF(self, line):
 		"""EOF to exit the program"""
@@ -32,11 +47,12 @@ class HBNBCommand(cmd.Cmd):
 		"""create <class_name> : Creates a new instance of BaseModel"""
 		if class_name == "":
 			print("** class name missing **")
-		elif class_name != "BaseModel":
+		elif class_name not in HBNBCommand.__class_dict:
 			print("** class doesn't exist **")
 		else:
-			obj = eval(class_name + "()")
-			obj.save()
+			#obj = eval(class_name + "()")
+			obj = HBNBCommand.__class_dict[class_name]()
+			models.storage.save()
 			print(obj.id)
 
 	def do_show(self, line):
@@ -45,7 +61,7 @@ class HBNBCommand(cmd.Cmd):
 		arg = line.split()
 		if len(arg) == 0:
 			print("** class name missing **")
-		elif arg[0] != "BaseModel":
+		elif arg[0] not in  HBNBCommand.__class_dict:
 			print("** class doesn't exist **")
 		elif len(arg) == 1:
 			print("** instance id missing **")
@@ -61,7 +77,7 @@ class HBNBCommand(cmd.Cmd):
 		arg = line.split()
 		if len(arg) == 0:
 			print("** class name missing **")
-		elif arg[0] != "BaseModel":
+		elif arg[0] not in HBNBCommand.__class_dict:
 			print("** class doesn't exist **")
 		elif len(arg) == 1:
 			print("** instance id missing **")
@@ -77,11 +93,11 @@ class HBNBCommand(cmd.Cmd):
 		"""all [class_name] :  Prints all string representation
 		of all instances based or not on the class name"""
 		if line:
-			if line == "BaseModel":
+			if line in HBNBCommand.__class_dict:
 				instance_list = []
 				for key, value in models.storage.all().items():
 					arg = key.split('.')
-					if arg[0] == "BaseModel":
+					if arg[0] == line:
 						instance_list.append(str(value))
 				print(instance_list)
 			else:
@@ -97,7 +113,7 @@ class HBNBCommand(cmd.Cmd):
 		if not line:
 			print("** class name missing **")
 		else:
-			if arg[0] != "BaseModel":
+			if arg[0] not in HBNBCommand.__class_dict:
 				print("** class doesn't exist **")
 			elif len(arg) < 2:
 				print("** instance id missing **")
