@@ -136,7 +136,8 @@ class TestBaseModel_to_Dict_Method(unittest.TestCase):
         b1 = BaseModel()
         with self.assertRaises(TypeError):
             b1.to_dict(None)_
-    def test___str__(self):
+
+    def test__str__(self):
         pass
 
 
