@@ -25,7 +25,7 @@ class BaseModel():
 				if key == 'created_at':
 					self.created_at = datetime.strptime(kwargs['created_at'], "%Y-%m-%dT%H:%M:%S.%f")
 				elif key == 'update_at':
-					self.updated_at = datetime.fromisoformat(kwargs['updated_at'])
+					self.updated_at = datetime.strptime(kwargs['updated_at'], "%Y-%m-%dT%H:%M:%S.%f")
 				else:
 					if key != '__class__':
 						setattr(self, key, value)
