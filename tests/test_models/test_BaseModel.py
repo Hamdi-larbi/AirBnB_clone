@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 
 """test cases using unittest"""
 
@@ -135,7 +135,7 @@ class TestBaseModel_to_Dict_Method(unittest.TestCase):
     def test_to_dict_with_arg(self):
         b1 = BaseModel()
         with self.assertRaises(TypeError):
-            b1.to_dict(None)_
+            b1.to_dict(None)
 
     def test__str__(self):
         pass

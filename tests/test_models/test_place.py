@@ -1,12 +1,12 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 """Test model for Place class"""
 
 import unittest
 import os
 from models.place import Place
+from models.base_model import BaseModel
 from datetime import datetime
 from time import sleep
-from models.base_model import BaseModel
 import uuid
 
 
