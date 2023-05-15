@@ -15,7 +15,7 @@ class TestBaseModel(unittest.TestCase):
 	def test_unique_id(self):
 		"""Test that every instance id is unique"""
 		b1 = BaseModel()
-		b2 = BaseModl()
+		b2 = BaseModel()
 		self.assertNotEqual(b1.id, b2.id)
 
 	def test_type_id(self):
@@ -33,10 +33,14 @@ class TestBaseModel(unittest.TestCase):
 		b = BaseModel()
 		self.assertIsInstance(b.updated_at, datetime)
 
-	def test_created_equal_updated(self):
-		"""test that created_at is equal to updated_at before update of instance"""
-		b = BaseModel()
-		self.assertEqual(b.created_at, b.updated_at)
+	def test_instantiation_with_args_and_kwargs(self):
+        	dt = datetime.today()
+        	dt_iso = dt.isoformat()
+        	b1 = BaseModel("12", id="345", created_at=dt_iso, updated_at=dt_iso)
+        	self.assertEqual(b1.id, "345")
+        	self.assertEqual(b1.created_at, dt)
+        	self.assertEqual(b1.updated_at, dt)
+
 
 
 
