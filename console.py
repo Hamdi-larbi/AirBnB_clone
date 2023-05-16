@@ -138,6 +138,7 @@ class HBNBCommand(cmd.Cmd):
 		n = 0
 		for key in models.storage.all():
 			arg = key.split()
+			arg[0] = arg[0][1:-1]
 			if arg[0] == line:
 				n += 1
 		print(n)
