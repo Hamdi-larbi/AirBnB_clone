@@ -137,24 +137,23 @@ class HBNBCommand(cmd.Cmd):
 		"""retrieve the number of instances of a class: <class name>.count()"""
 		n = 0
 		for key in models.storage.all():
-			arg = key.split()
-			arg[0] = arg[0].strip("[]")
+			arg = key.split(".")
 			if arg[0] == line:
 				n += 1
 		print(n)
 
 	def precmd(self, line):
 		"""modify the linecommand"""
-		argument = line.split(".")
-		if len(argument) > 1:
-			arg = re.split(r'[.(),"\s]',line)
+		arg = re.split(r'[.(),]',line)
+		if len(arg) > 1:
 			if arg[1] == "all" or arg[1] == "count":
 				command_line = "{} {}".format(arg[1], arg[0])
 			elif arg[1] == "destroy" or arg[1] == "show":
-				command_line = "{} {} {}".format(arg[1], arg[0], arg[2])
+				command_line = "{} {} {}".format(arg[1], arg[0], arg[2].strip())
 			else:
-				command_line = "{} {} {} {} {}".format(arg[1], arg[0], arg[2], arg[3], arg[4])
-				#print(command_line)
+				command_line = "{} {} {} {} {}".format(arg[1], arg[0], arg[2], arg[3].strip()[1:-1], arg[4].strip()[1:-1])
+				print(arg)
+				print(command_line)
 			return(command_line)
 		else:
 			return(line)
