@@ -133,6 +133,15 @@ class HBNBCommand(cmd.Cmd):
 						arg[3] = att_type(arg[3])
 					setattr(obj, arg[2], arg[3])
 					models.storage.save()
+	def do_count(self, line):
+		"""retrieve the number of instances of a class: <class name>.count()"""
+		n = 0
+		for key in models.storage.all():
+			arg = key.split()
+			if arg[0] == line:
+				n += 1
+		print(n)
+
 	def precmd(self, line):
 		"""modify the linecommand"""
 		argument = line.split(".")
