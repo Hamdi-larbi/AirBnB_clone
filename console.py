@@ -14,7 +14,7 @@ from models.amenity import Amenity
 from models.place import Place
 from models.review import Review
 import models
-
+import re
 
 
 class HBNBCommand(cmd.Cmd):
@@ -135,12 +135,17 @@ class HBNBCommand(cmd.Cmd):
 					models.storage.save()
 	def precmd(self, line):
 		"""modify the linecommand"""
-		arg = line.split(".")
-		if len(arg) > 1:
-			if line == "{}.{}".format(arg[0], arg[1]):
-				arg[1] = arg[1][:-2]
+		argument = line.split(".")
+		if len(argument) > 1:
+			arg = re.split(r'[.(),"\s]',line)
+			if arg[1] == "all" or arg[1] == "count":
 				command_line = "{} {}".format(arg[1], arg[0])
-				return(command_line)
+			elif arg[1] == "destroy" or arg[1] == "show":
+				command_line = "{} {} {}".format(arg[1], arg[0], arg[2])
+			else:
+				command_line = "{} {} {} {} {}".format(arg[1], arg[0], arg[2], arg[3], arg[4])
+				print(command_line)
+			return(command_line)
 		else:
 			return(line)
 		
