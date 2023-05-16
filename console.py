@@ -153,7 +153,7 @@ class HBNBCommand(cmd.Cmd):
 				command_line = "{} {} {}".format(arg[1], arg[0], arg[2])
 			else:
 				command_line = "{} {} {} {} {}".format(arg[1], arg[0], arg[2], arg[3], arg[4])
-				print(command_line)
+				#print(command_line)
 			return(command_line)
 		else:
 			return(line)
