@@ -133,6 +133,17 @@ class HBNBCommand(cmd.Cmd):
 						arg[3] = att_type(arg[3])
 					setattr(obj, arg[2], arg[3])
 					models.storage.save()
+	def precmd(self, line):
+		"""modify the linecommand"""
+		arg = line.split(".")
+		if len(arg) > 1:
+			if line == "{}.{}".format(arg[0], arg[1]):
+				arg[1] = arg[1][:-2]
+				command_line = "{} {}".format(arg[1], arg[0])
+				return(command_line)
+		else:
+			return(line)
+		
 
 
 
