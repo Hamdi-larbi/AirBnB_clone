@@ -7,7 +7,7 @@
 }
 
 .locations {
-	display: inline-block;
+	float: left;
 	vertical-align: middle;
 
 	height: 100%;
@@ -18,7 +18,7 @@
 }
 
 .amenities {
-	display: inline-block;
+	float: left;
 	vertical-align: middle;
 
 	height: 100%;
